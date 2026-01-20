@@ -1,8 +1,17 @@
 import React from "react";
 import { Link, NavLink } from "react-router";
 import FirstLogo from "../FirstLogo/FirstLogo";
+import UseAuth from "../../../Hooks/UseAuth";
 
 const NavBar = () => {
+  const { user,LogOut } = UseAuth();
+  console.log("USER:", user);
+
+  const handleLogOut = () =>{
+    LogOut()
+    .then(result =>{console.log(result)})
+    .catch(error =>{console.log(error)})
+  };
   const navItems = (
     <>
       <li>
@@ -120,12 +129,19 @@ const NavBar = () => {
           Farmer Registration
         </Link>
 
-        <Link
+        <div>
+          {user ? 
+          <button onClick={handleLogOut} className="btn-primary-custom text-sm md:text-base">Log Out</button>
+          :
+          <Link
           to="/login"
           className="btn-primary-custom text-sm md:text-base"
         >
           Login
         </Link>
+          
+        }
+        </div>
 
         <Link
           to="/register"
@@ -133,6 +149,9 @@ const NavBar = () => {
         >
           Register
         </Link>
+      </div>
+      <div>
+        <p>{user}</p>
       </div>
     </div>
   );

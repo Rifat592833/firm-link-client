@@ -9,10 +9,11 @@ const PrivateRoutes = () => {
   if(loading){
     return <span className="loading loading-spinner loading-xl"></span>
   }
-  if(!user){
-     return <Navigate state={location?.pathname} to="/login"></Navigate>
-  }
-    return 
+  
+  if (!user) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+}
+
 };
 
 export default PrivateRoutes;
