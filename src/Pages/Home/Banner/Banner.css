@@ -1,0 +1,12 @@
+/* banner.css or global.css */
+.carousel .control-dots .dot {
+    background: #000; /* black dots */
+    width: 12px;       /* optional size */
+    height: 12px;      /* optional size */
+    opacity: 0.8;      /* optional transparency */
+}
+
+.carousel .control-dots .dot.selected {
+    background: #ff0000; /* red for selected dot */
+    opacity: 1;
+}
